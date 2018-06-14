@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Секундомер
+using System;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace StopWatch
 {
@@ -17,27 +12,59 @@ namespace StopWatch
             InitializeComponent();
         }
 
-        DateTime date;
+        //Объект хранящий наш показатель времени
+        Stopwatch stopWatch = Stopwatch.StartNew();
+
+        //Кнопка пуск/пауза
         private void start_stop_Click(object sender, EventArgs e)
         {
-            date = DateTime.Now;
-            timer1.Enabled = !timer1.Enabled;
-            start_stop.Text = timer1.Enabled ? "Stop" : "Start";
 
-            Timer timer = new Timer();
-            timer.Interval = 10;
-            timer.Tick += new EventHandler(timer1_Tick);
-            timer.Start();
+            timer1.Interval = 10;
+
+            if(timer1.Enabled)
+            {
+                start_stop.Text = "Пуск";
+                stopWatch.Stop();
+                timer1.Stop();
+            }
+            else
+            {
+                start_stop.Text = "Пауза";
+                stopWatch.Start();
+                timer1.Start();
+                
+            }
         
         }
 
+        //Таймер
         private void timer1_Tick(object sender, EventArgs e)
         {
-            long tick = DateTime.Now.Ticks - date.Ticks;
-            DateTime stopWatch = new DateTime();
+            TimeSpan ts = stopWatch.Elapsed;
+            label_time.Text = string.Format("{0:00}:{1:00}.{2:000}", ts.Minutes, ts.Seconds, ts.Milliseconds);
+        }
 
-            stopWatch = stopWatch.AddTicks(tick);
-            label_time.Text = String.Format("{0:HH:mm:ss:ff}", stopWatch);
+        //Круг
+        private void button_circle_Click(object sender, EventArgs e)
+        {
+            TimeSpan ts = stopWatch.Elapsed;
+            listBox1.Items.Add(string.Format("{0:00}:{1:00}.{2:000}", ts.Minutes, ts.Seconds, ts.Milliseconds));
+        }
+
+        //Сброс
+        private void button_reset_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            if (timer1.Enabled == true)
+            {
+                stopWatch = Stopwatch.StartNew();
+            }
+            else
+            {
+                stopWatch = new Stopwatch();
+            }
+            TimeSpan ts = stopWatch.Elapsed;
+            label_time.Text = string.Format("{0:00}:{1:00}.{2:000}", ts.Minutes, ts.Seconds, ts.Milliseconds);
         }
     }
 }
