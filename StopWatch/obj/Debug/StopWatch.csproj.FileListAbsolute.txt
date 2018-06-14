@@ -1,0 +1,9 @@
+D:\VisualStudioApp\StopWatch\StopWatch\bin\Debug\StopWatch.exe.config
+D:\VisualStudioApp\StopWatch\StopWatch\bin\Debug\StopWatch.exe
+D:\VisualStudioApp\StopWatch\StopWatch\bin\Debug\StopWatch.pdb
+D:\VisualStudioApp\StopWatch\StopWatch\obj\Debug\StopWatch.csprojResolveAssemblyReference.cache
+D:\VisualStudioApp\StopWatch\StopWatch\obj\Debug\StopWatch.Form1.resources
+D:\VisualStudioApp\StopWatch\StopWatch\obj\Debug\StopWatch.Properties.Resources.resources
+D:\VisualStudioApp\StopWatch\StopWatch\obj\Debug\StopWatch.csproj.GenerateResource.Cache
+D:\VisualStudioApp\StopWatch\StopWatch\obj\Debug\StopWatch.exe
+D:\VisualStudioApp\StopWatch\StopWatch\obj\Debug\StopWatch.pdb
